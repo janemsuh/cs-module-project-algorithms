@@ -2,10 +2,22 @@
 Input: an integer
 Returns: an integer
 '''
-def eating_cookies(n):
-    # Your code here
+def eating_cookies(n, cache={}):
+    # "negative" number of cookies
+    if n < 0:
+        return 0
+    
+    # no cookies
+    if n == 0:
+        return 1
+    
+    elif n in cache:
+        return cache[n]
 
-    pass
+    else:
+        x = eating_cookies(n - 1, cache) + eating_cookies(n - 2, cache) + eating_cookies(n - 3, cache)
+        cache[n] = x
+        return x
 
 if __name__ == "__main__":
     # Use the main function here to test out your implementation

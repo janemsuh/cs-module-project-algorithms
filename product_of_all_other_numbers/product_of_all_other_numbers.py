@@ -3,9 +3,15 @@ Input: a List of integers
 Returns: a List of integers
 '''
 def product_of_all_other_numbers(arr):
-    # Your code here
-
-    pass
+    # assumes arr is composed of all non-zero integers
+    # calculate product of all integers
+    product = 1
+    for num in arr:
+        product = product * num
+    # divide product by value at each index
+    for idx, val in enumerate(arr):
+        arr[idx] = product / val
+    return arr
 
 
 if __name__ == '__main__':
